@@ -28,7 +28,7 @@ public record Bracket(
             public JsonElement serialize(Direction direction, java.lang.reflect.Type type, JsonSerializationContext jsonSerializationContext) {
                 return switch (direction) {
                     case OPEN -> new JsonPrimitive("open");
-                    case CLOSED -> new JsonPrimitive("closed");
+                    case CLOSED -> new JsonPrimitive("close");
                 };
             }
         }
