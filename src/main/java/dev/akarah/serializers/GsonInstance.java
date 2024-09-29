@@ -4,10 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dev.akarah.codeblocks.actions.*;
 import dev.akarah.codeblocks.arguments.VarItem;
-import dev.akarah.codeblocks.arguments.varitems.DFComponent;
-import dev.akarah.codeblocks.arguments.varitems.DFNumber;
-import dev.akarah.codeblocks.arguments.varitems.DFString;
-import dev.akarah.codeblocks.arguments.varitems.DFVariable;
+import dev.akarah.codeblocks.arguments.varitems.*;
 import dev.akarah.codeblocks.flow.*;
 import dev.akarah.codeblocks.flow.Process;
 import dev.akarah.codeblocks.misc.Bracket;
@@ -39,6 +36,7 @@ public class GsonInstance {
             .registerTypeAdapter(DFString.class, new DFString.Serializer())
             .registerTypeAdapter(DFNumber.class, new DFNumber.Serializer())
             .registerTypeAdapter(DFComponent.class, new DFComponent.Serializer())
+            .registerTypeAdapter(DFParameter.class, new DFParameter.Serializer())
 
             .registerTypeAdapter(DFVariable.class, new DFVariable.Serializer())
             .registerTypeAdapter(DFVariable.Scope.class, new DFVariable.Scope.Serializer())
