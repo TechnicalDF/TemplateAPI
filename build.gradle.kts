@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("maven-publish")
 }
 
 group = "dev.akarah"
@@ -27,4 +28,33 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
     jvmArgs("--enable-preview")
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+
+            pom {
+                name = "TemplateAPI"
+                description = "API for creating DiamondFire templates"
+                url = "https://akarah.dev"
+
+                scm {
+                    url = "https://github/akarahdev/TemplateAPI"
+                }
+
+                issueManagement {
+                    system = "github"
+                    url = "https://github.com/akarahdev/TemplateAPI/issues"
+                }
+                licenses {
+                    license {
+                        name.set("Apache-2.0")
+                        url.set("https://opensource.org/licenses/Apache-2.0")
+                    }
+                }
+            }
+        }
+    }
 }
