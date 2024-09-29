@@ -10,6 +10,8 @@ import dev.akarah.codeblocks.flow.Process;
 import dev.akarah.codeblocks.misc.Bracket;
 import dev.akarah.template.Template;
 
+import javax.naming.ldap.Control;
+
 public class GsonInstance {
     public static Gson GSON =
         new GsonBuilder()
@@ -23,6 +25,7 @@ public class GsonInstance {
             .registerTypeAdapter(EntityAction.class, new EntityAction.Serializer())
             .registerTypeAdapter(GameAction.class, new GameAction.Serializer())
             .registerTypeAdapter(SetVariableAction.class, new SetVariableAction.Serializer())
+            .registerTypeAdapter(ControlAction.class, new ControlAction.Serializer())
 
             .registerTypeAdapter(PlayerEvent.class, new PlayerEvent.Serializer())
             .registerTypeAdapter(EntityEvent.class, new EntityEvent.Serializer())
