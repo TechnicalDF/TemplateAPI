@@ -7,6 +7,7 @@ import dev.akarah.codeblocks.arguments.VarItem;
 import dev.akarah.codeblocks.arguments.varitems.*;
 import dev.akarah.codeblocks.flow.*;
 import dev.akarah.codeblocks.flow.Process;
+import dev.akarah.codeblocks.ifs.*;
 import dev.akarah.codeblocks.misc.Bracket;
 import dev.akarah.template.Template;
 
@@ -34,6 +35,12 @@ public class GsonInstance {
             .registerTypeAdapter(Process.class, new Process.Serializer())
             .registerTypeAdapter(CallFunction.class, new CallFunction.Serializer())
             .registerTypeAdapter(StartProcess.class, new StartProcess.Serializer())
+
+            .registerTypeAdapter(IfVariable.class, new IfVariable.Serializer())
+            .registerTypeAdapter(IfPlayer.class, new IfPlayer.Serializer())
+            .registerTypeAdapter(IfGame.class, new IfGame.Serializer())
+            .registerTypeAdapter(Repeat.class, new Repeat.Serializer())
+            .registerTypeAdapter(SelectObject.class, new SelectObject.Serializer())
 
 
             .registerTypeAdapter(DFString.class, new DFString.Serializer())
