@@ -2,6 +2,7 @@ package dev.akarah.serializers;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import dev.akarah.codeblocks.CodeBlock;
 import dev.akarah.codeblocks.actions.*;
 import dev.akarah.codeblocks.arguments.VarItem;
 import dev.akarah.codeblocks.arguments.varitems.*;
@@ -47,8 +48,15 @@ public class GsonInstance {
             .registerTypeAdapter(DFNumber.class, new DFNumber.Serializer())
             .registerTypeAdapter(DFComponent.class, new DFComponent.Serializer())
             .registerTypeAdapter(DFParameter.class, new DFParameter.Serializer())
+            .registerTypeAdapter(DFGameValue.class, new DFGameValue.Serializer())
+            .registerTypeAdapter(DFSound.class, new DFSound.Serializer())
 
             .registerTypeAdapter(DFVariable.class, new DFVariable.Serializer())
             .registerTypeAdapter(DFVariable.Scope.class, new DFVariable.Scope.Serializer())
+
+            .registerTypeAdapter(DFBlockTag.class, new DFBlockTag.Serializer())
+
+            .registerTypeAdapter(CodeBlock.class, new CodeBlock.Serializer())
+            .registerTypeAdapter(VarItem.class, new VarItem.Serializer())
             .create();
 }

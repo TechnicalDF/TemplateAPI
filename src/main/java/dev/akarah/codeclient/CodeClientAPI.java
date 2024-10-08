@@ -49,11 +49,16 @@ public class CodeClientAPI extends WebSocketClient {
 
     @Override
     public void onError(Exception e) {
-
+        throw new RuntimeException(e);
     }
 
     public CodeClientAPI requestAuth() {
         this.send("scopes default inventory movement read_plot write_code clear_plot");
+        return this;
+    }
+
+    public CodeClientAPI scan() {
+        this.send("scan");
         return this;
     }
 
@@ -79,6 +84,14 @@ public class CodeClientAPI extends WebSocketClient {
 
         public static Builder create() {
             return new Builder();
+        }
+
+        public Builder onMessage(BiConsumer<String, CodeClientAPI> consumer) {
+            this.messageConsumers.add((msg, api) -> {
+                if(!msg.equals("auth"))
+                    consumer.accept(msg, api);
+            });
+            return this;
         }
 
         public Builder onAuth(Consumer<CodeClientAPI> consumer) {

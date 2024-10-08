@@ -1,9 +1,6 @@
 package dev.akarah.codeblocks.arguments.varitems;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
+import com.google.gson.*;
 import dev.akarah.codeblocks.arguments.VarItem;
 
 import java.lang.reflect.Type;
@@ -17,7 +14,7 @@ public record DFParameter(
     String description,
     VarItem _default
 ) implements VarItem {
-    public static class Serializer implements JsonSerializer<DFParameter> {
+    public static class Serializer implements JsonSerializer<DFParameter>, JsonDeserializer<DFParameter> {
         @Override
         public JsonElement serialize(DFParameter stringVarItem, Type type, JsonSerializationContext jsonSerializationContext) {
             var base = new JsonObject();
@@ -34,6 +31,11 @@ public record DFParameter(
 
             base.add("data", data);
             return base;
+        }
+
+        @Override
+        public DFParameter deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+            return null;
         }
     }
 }
